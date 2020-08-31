@@ -1,0 +1,7 @@
+<br><br>
+<% @favorites.each do |favorite| %>
+  <%= favorite.created_at.strftime("%Y-%m-%d %H:%M") %><br><br>
+  <%= favorite.user.name %><br>
+  <%= image_tag favorite.image.url %><br>
+  <%= favorite.content %><br><br><br><br><br>
+<% end %>
