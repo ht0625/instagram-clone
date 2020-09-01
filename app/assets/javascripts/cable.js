@@ -11,3 +11,11 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+
+
+$(document).on('turbolinks:load', function(){
+  $('#accordion dd').hide();
+  $('#accordion dt').on('click', function(){
+    $(this).next('dd').slideToggle();
+  });
+});

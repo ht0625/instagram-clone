@@ -1,19 +1,26 @@
-<h1>edit</h1>
-<%= render 'form' %>
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :email %>
-  <%= f.email_field :email %><br>
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
+<h1>プロフィール編集</h1>
+<div class="view">
+  <%= render 'form' %>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %><br><br>
+    <dl id="accordion">
+      <dt>パスワード変更はこちら</dt>
+      <dd>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %><br>
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation %><br>
+      </dd>
+    </dl>
+    <%= f.label :image %><br>
+    <%= image_tag(@user.image.url) if @user.image && @user.image.url %><br>
+    <%= f.file_field :image %><br>
+    <%= f.hidden_field :image_cache %><br>
 
-  <%= f.label :image %>
-  <%= image_tag(@user.image.url) if @user.image && @user.image.url %><br>
-  <%= f.file_field :image %><br>
-  <%= f.hidden_field :image_cache %>
-
-  <%= f.submit "Create my account" %>
-<% end %>
+    <%= f.submit "Create my account", class: 'btn btn-primary' %>
+  <% end %>
+  <br>
+</div>

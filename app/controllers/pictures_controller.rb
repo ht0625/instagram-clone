@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
   before_action :authenticate_user
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order(created_at: :desc)
   end
 
   def show
@@ -30,8 +30,8 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        PictureMailer.picture_mail(@picture).deliver
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        #PictureMailer.picture_mail(@picture).deliver
+        format.html { redirect_to pictures_path, notice: '投稿しました' }
         format.json { render :show, status: :created, location: @picture }
       else
         format.html { render :new }

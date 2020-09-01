@@ -1,5 +1,6 @@
-<h1>New Picture</h1>
-
-<%= render 'form', picture: @picture %>
-
-<%= link_to 'Back', pictures_path %>
+<h1>新規投稿</h1>
+<div class="view">
+  <%= render 'form', picture: @picture %>
+  <%= link_to 'Back', pictures_path ,class: 'btn btn-primary'%>
+  <br>
+</div>

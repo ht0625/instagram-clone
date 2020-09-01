@@ -1,4 +1,7 @@
 <h1><%= @user.name %>のページ</h1>
-<p>メールアドレス: <%= @user.email %></p>
-<%= image_tag @user.image.url %>
-<%= link_to 'Edit', edit_user_path(@user.id) %>
+<div class="view">
+  <p>メールアドレス: <%= @user.email %></p>
+  <%= image_tag @user.image.url %><br><br>
+  <%= link_to 'お気に入り一覧', favorites_index_path ,class: 'btn btn-primary' %>
+  <%= link_to 'Edit', edit_user_path(@user.id) ,class: 'btn btn-primary' %>
+</div>
