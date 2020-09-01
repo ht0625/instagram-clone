@@ -17,6 +17,8 @@
     <% end %>
   <% end %>
   <%= link_to 'Back', pictures_path ,class: 'btn btn-primary' %>
-  <%= link_to 'Edit', edit_picture_path(@picture),class: 'btn btn-primary'  %>
-  <%= link_to 'Destroy', picture_path(@picture) , method: :delete, data: { confirm: 'Are you sure?' } ,class: 'btn btn-primary' %>
+  <% if current_user.id == @picture[:user_id] %>
+    <%= link_to 'Edit', edit_picture_path(@picture),class: 'btn btn-primary'  %>
+    <%= link_to 'Destroy', picture_path(@picture) , method: :delete, data: { confirm: 'Are you sure?' } ,class: 'btn btn-primary' %>
+  <% end %>
 </div>

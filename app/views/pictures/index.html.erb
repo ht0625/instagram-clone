@@ -9,8 +9,11 @@
       <%= image_tag picture.image.url %><br>
       <%= picture.content %><br><br>
       <%= link_to 'Show', picture %>
-      <%= link_to 'Edit', edit_picture_path(picture) %>
-      <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %><br><br><br>
+      <% if current_user.id == picture[:user_id] %>
+        <%= link_to 'Edit', edit_picture_path(picture) %>
+        <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <br><br><br>
     <% end %>
 
 <br><br><br>

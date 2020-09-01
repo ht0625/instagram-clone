@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
-
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     @pictures = Picture.all
   end
